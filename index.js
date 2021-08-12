@@ -1,25 +1,39 @@
-const http = require('http');
+import * as http from 'http';
+import * as uuid  from 'uuid';
+var todo = [];
 
 const server = http.createServer((req, res) => {
     if (req.url == "/" && req.method == "GET") {
-        res.writeHead(200, 'text/plain');
-        res.write('this is default landing page');
+        res.setHeader('content-type', 'application/json')
+        res.writeHead(200, 'added');
+        res.write(JSON.stringify(todo));
         res.end();
     }
     else if (req.url == "/add" && req.method == "POST") {
-        res.writeHead(200, 'text/plain');
-        res.write('we are in add part');
-        res.end();
+        req.on('data', (data) => {
+            var reqdata = JSON.parse(data);
+            reqdata['id'] = uuid.v4();
+            todo.push(reqdata);
+            console.log(todo);
+            res.setHeader('content-type','application/json')
+            res.writeHead(200, 'added');
+            res.write(JSON.stringify(todo));
+            res.end();
+        });
+        
     }
-    else if (res.url == "/done" && req.method == "PUT") {
-        console.log(req.url, req.method);
+    else if (req.method == "PUT") {
+        let id = req.url.substring(req.url.lastIndexOf('=') + 1);
         res.writeHead(200, 'text/plain');
         res.write('done buuton is pressed and put method is envoked');
         res.end();
     }
-    else if (req.url == '/delete' && req.method == 'DELETE') {
-        res.writeHead(200, 'text/plain');
-        res.write('this method will be called when delete button is pressed');
+    else if (req.method == 'DELETE') {
+        let id = req.url.substring(req.url.lastIndexOf('=') + 1);
+        todo = todo.filter(items => items.id !== `${id}`);
+        res.setHeader('content-type', 'application/json')
+        res.writeHead(200, 'added');
+        res.write(JSON.stringify(todo));
         res.end();
     }
     else {
