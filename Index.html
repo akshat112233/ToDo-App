@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merienda:wght@700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
+        integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <section>
+            <div class="first-heading-div">            <!-- this is heading number 1 -->
+                <h1>TO DO LIST</h1>
+            </div>
+
+            <div class="innerdiv">                     <!--  this is input section or to do list add section -->
+                <div class="text-block">
+                    <input type="text" id="heading" placeholder="Heading">
+                    <textarea name="" id="description" cols="" rows="8" style="resize: none;" placeholder="Description"></textarea>
+                </div>
+                <div id="add-button">
+                    <button id="add-btn" onclick="add()"><i class="fas fa-plus"></i></button>
+                </div>
+            </div>
+
+            <div class="second-heading-div">           <!-- this is heading number 2 -->
+                <h1>TASKS TO LOOK</h1>
+            </div>
+
+            <ul id="ul"></ul>                          <!-- this is type of demo block which has to be entered -->               
+            
+            <div class="second-heading-div">           <!-- this is heading number 3 -->
+                <h1>COMPLETED</h1>
+            </div>
+
+            <ul id="completed-list"></ul>             <!-- this is for completed list-->
+        </section>
+    </div>
+    <script src="myscript.js"></script>
+</body>
+</html>

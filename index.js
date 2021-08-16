@@ -24,6 +24,14 @@ const server = http.createServer((req, res) => {
     }
     else if (req.method == "PUT") {
         let id = req.url.substring(req.url.lastIndexOf('=') + 1);
+        req.on('data', (data) => {
+            let reqdata = JSON.parse(data);
+            let index = todo.findIndex(obj => obj.id == id);
+            if (reqdata.name != '' && reqdata.desc) {
+                todo[index].name = reqdata.name;
+            }
+        });
+        
         res.writeHead(200, 'text/plain');
         res.write('done buuton is pressed and put method is envoked');
         res.end();
