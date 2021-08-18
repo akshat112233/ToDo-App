@@ -1,6 +1,5 @@
 import express, { json } from 'express';
 import * as uuid from 'uuid';
-// import * as url from 'url';
 
 const exp = express();
 exp.use(express.json());
@@ -20,7 +19,6 @@ exp.post('/add', (req, res) => {
 exp.put('/update', (req, res) => {
     const update = req.body;
     let id = req.query.id;
-    console.log(id);
     let index = arr.findIndex(ind => ind.id == `${id}`);
     arr[index].name = update.name;
     arr[index].type = update.type;
@@ -34,5 +32,5 @@ exp.delete('/delete', (req, res) => {
 });
 
 exp.listen(4000, () => {
-    console.log('server started');
+    console.log('server started at 4000');
 })
